@@ -1,0 +1,5 @@
+[core]
+hostname = "api.cmn.frigg.dev.cray.com"
+
+[auth.login]
+username = "alanm"

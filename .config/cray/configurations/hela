@@ -1,0 +1,5 @@
+[core]
+hostname = "api.cmn.hela.dev.cray.com"
+
+[auth.login]
+username = "alanm"

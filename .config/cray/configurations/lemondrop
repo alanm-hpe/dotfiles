@@ -1,0 +1,5 @@
+[core]
+hostname = "https://auth.cmn.lemondrop.hpc.amslabs.hpecorp.net"
+
+[auth.login]
+username = "alanm"

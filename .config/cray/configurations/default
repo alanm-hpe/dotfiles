@@ -1,0 +1,5 @@
+[core]
+hostname = "https://asfad"
+
+[auth.login]
+username = "asfad"

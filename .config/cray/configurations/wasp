@@ -1,0 +1,5 @@
+[core]
+hostname = "https://auth.cmn.wasp.dev.cray.com"
+
+[auth.login]
+username = "alanm"

@@ -1,0 +1,5 @@
+[core]
+hostname = "https://auth.cmn.bradi.hpc.amslabs.hpecorp.net"
+
+[auth.login]
+username = "alanm"
