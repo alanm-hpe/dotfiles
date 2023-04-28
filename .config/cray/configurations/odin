@@ -1,5 +1,5 @@
 [core]
-hostname = "api.cmn.odin.dev.cray.com"
+hostname = "https://auth.cmn.odin.hpc.amslabs.hpecorp.net"
 
 [auth.login]
 username = "alanm"
