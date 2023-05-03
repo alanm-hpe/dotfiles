@@ -1,3 +1,5 @@
 [user]
 	email = alanm@hpe.com
 	name = Alan Mutschelknaus
+[core]
+	editor = nvim
