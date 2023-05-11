@@ -126,9 +126,9 @@ function s {
     ssh root@${system}-ncn-m001.hpc.amslabs.hpecorp.net "${@}"
 }
 
-function t {
-  VAR=$1
-  export PROMPT_COMMAND='echo -ne "\033]0;${VAR}\007"'
+function cfs_clone {
+    CFS_CONFIG=$(cray cfs components describe $1 | jq -r '.desiredConfig')
+    cray cfs configurations describe $CFS_CONFIG | jq -r 'del(.name,.lastUpdated)'
 }
 
 parse_git_branch() {
