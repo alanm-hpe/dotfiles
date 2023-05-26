@@ -101,6 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config='/usr/bin/git --git-dir=/Users/alanm/.cfg/ --work-tree=/Users/alanm'
 alias superinit='~/github/superinit/superinit.sh'
+alias ipcalc='ipcalc --nocolor'
 
 export PATH=${PATH}:$HOME/bin
 export PATH=${PATH}:$HOME/google-cloud-sdk/bin
