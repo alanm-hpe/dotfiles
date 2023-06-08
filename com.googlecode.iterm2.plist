@@ -2338,7 +2338,7 @@
 	<key>QuickPasteDelayBetweenCalls</key>
 	<real>0.0066666663624346256</real>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
