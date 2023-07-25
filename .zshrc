@@ -116,6 +116,10 @@ export CRAY_FORMAT=json
 
 alias vim=nvim
 
+function satw {
+  export REQUESTS_CA_BUNDLE="/Users/alanm/.config/superinit/$(cat ~/.config/superinit/active_system)/platform-ca-certs.crt"
+  watch $HOME/.config/superinit/cmds/sat_venv/bin/sat --token-file ~/.config/cray/tokens/$(echo $(cray config get core.hostname) | sed -e 's/https:\/\///' -e 's/\./_/g' -e "s/$/.$USER/g") $@
+}
 function superinit_sat {
   export REQUESTS_CA_BUNDLE="/Users/alanm/.config/superinit/$(cat ~/.config/superinit/active_system)/platform-ca-certs.crt"
   $HOME/.config/superinit/cmds/sat_venv/bin/sat --token-file ~/.config/cray/tokens/$(echo $(cray config get core.hostname) | sed -e 's/https:\/\///' -e 's/\./_/g' -e "s/$/.$USER/g") $@
