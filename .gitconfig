@@ -3,3 +3,5 @@
 	name = Alan Mutschelknaus
 [core]
 	editor = nvim
+[init]
+	defaultBranch = main
