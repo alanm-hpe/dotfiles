@@ -1,0 +1,106 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y"
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/
+  - trigger: :fj
+    label: Add --format json
+    replace: --format json
+  - trigger: :efj
+    label: Set env for json
+    replace: export CRAY_FORMAT=json
+  - trigger: :ns
+    label: -n services
+    replace: -n services
+  - trigger: :PCS-state
+    label: PCS - Get the power state for an xname
+    replace: cray power status describe
+  - trigger: :PCS-on
+    label: PCS - Turn on the xname
+    replace: cray power transition on --xnames
+  - trigger: :CAPMC-state
+    label: CAPMC - show the power state for an xname
+    replace: cray capmc get_xname_status create --xnames
+  - trigger: :BOS-pending
+    label: BOS - show pending sessions
+    replace: cray bos sessions list --status pending
+  - trigger: :BOS-session
+    label: BOS - describe a session by name or UUID
+    replace: cray bos sessions describe
+  - trigger: :BOS-template
+    label: BOS - describe a session template by name or UUID
+    replace: cray bos sessiontemplates describe
+  - trigger: :BOSv1-rebootnode
+    label: BOSv1 - reboot a node with template
+    replace: cray bos sessions create --limit x --name s --template-name s --operation
+      reboot -vvv
+  - trigger: :BOSv1-session
+    label: BOSv1 - describe a session by UUID
+    replace: cray bos v1 session describe
+  - trigger: :SAT-bootstatus
+    label: SAT - get boot status for a node
+    replace: sat -u root status --format json --fields 'Boot Status,State' --filter
+      xname=
+  - trigger: :HSM-xname
+    label: HSM - Describe an xname
+    replace: cray hsm state components describe
+  - trigger: :HSM-findavailablenode
+    label: HSM - find an available node
+    replace: cray hsm state components list --role Compute --state Off --arch X86
+      --enabled true --flag OK --format json | jq '.[] | reverse | first'
+  - trigger: :HSM-locked?
+    label: HSM - show if the node is locked
+    replace: cray hsm locks status list --locked true --format json | jq '.Components[]
+      | select(.ID | contains(""))'
+  - trigger: :VCS-creds
+    label: VCS - populate credentials in env vars
+    replace: VCS_USER=$(kubectl get secret -n services vcs-user-credentials --template="{{.data.vcs_username}}"
+      | base64 --decode); VCS_PASS=$(kubectl get secret -n services vcs-user-credentials
+      --template="{{.data.vcs_password}}" | base64 --decode)
+  - trigger: VCS-clonerepo
+    label: VCS - clone a repo with populate credentials
+    replace: git clone https://"${VCS_USER}":"${VCS_PASS}"@api-gw-service-nmn.local/vcs/cray/"${VCS_REPO}"
+  - trigger: :CFS-session
+    label: CFS - describe a session by name or UUID
+    replace: cray cfs sessions describe
+  - trigger: :CFS-logs
+    label: CFS - show logs for a session by name or UUID
+    replace: kubectl -n services logs job/$(cray cfs sessions describe  --format json
+      | jq -r '.status.session.job') --all-containers=true | less
+  - trigger: :IMS-manual
+    label: IMS - Provision a chroot with SSH access for manual modification
+    replace: cray ims jobs create --job-type customize --image-root-archive-name my_customized_image
+      --kernel-file-name vmlinuz --artifact-id $IMS_IMAGE_ID --public-key-id $IMS_PUBLIC_KEY_ID
+      --enable-debug False
