@@ -1,5 +1,6 @@
 [core]
-hostname = "api.cmn.frigg.dev.cray.com"
+hostname = "https://auth.cmn.frigg.hpc.amslabs.hpecorp.net"
+tenant = ""
 
 [auth.login]
 username = "alanm"
