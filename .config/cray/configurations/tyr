@@ -1,5 +1,6 @@
 [core]
-hostname = "https://auth.cmn.tyr.dev.cray.com"
+hostname = "https://auth.cmn.tyr.hpc.amslabs.hpecorp.net"
+tenant = ""
 
 [auth.login]
 username = "alanm"

@@ -38,3 +38,9 @@ matches:
     replace: "gcloud compute ssh --zone 'us-central1-a' --project 'hpe-beau-csm-livecd-18a5' 'root@ncn-m001'"
   - trigger: ":vara"
     replace: "gcloud compute --project hpe-beau-csm-livecd-18a5 ssh root@ncn-w001 --zone=us-central1-a -- -L 8080:10.21.30.246:80"
+
+
+  #####
+  # Python-isms
+  - trigger: ":pyserver"
+    replace: "python3 -m http.server 7777"
