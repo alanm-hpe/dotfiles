@@ -28,7 +28,10 @@ yabai -m mouse_drop_action swap
 
 
 # disable specific apps
+# To find the name of the app to filter, try:
+# yabai -m query --windows | grep app
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Spotify$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Pulse$" manage=off
+yabai -m rule --add app="^quilt1$" manage=off
