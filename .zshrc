@@ -100,50 +100,18 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config='/usr/bin/git --git-dir=/Users/alanm/.cfg/ --work-tree=/Users/alanm'
-alias superinit='~/github/superinit/superinit.sh'
 alias ipcalc='ipcalc --nocolor'
 
 export PATH=${PATH}:$HOME/bin
 export PATH=${PATH}:$HOME/google-cloud-sdk/bin
-export PATH=${PATH}:$HOME/.config/superinit/cmds/cray_venv/bin
-export PATH=${PATH}:$HOME/.config/superinit/cmds/sat_venv/bin
 export PATH="${PATH}:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/alanm/bin"
 
-#eval "$(register-python-argcomplete sat)"
-
-#eval "$(_CRAY_COMPLETE=source_zsh cray)"
-export CRAY_FORMAT=json
 export EDITOR=nvim
 
 alias vim=nvim
 
-function satw {
-  export REQUESTS_CA_BUNDLE="/Users/alanm/.config/superinit/$(cat ~/.config/superinit/active_system)/platform-ca-certs.crt"
-  watch $HOME/.config/superinit/cmds/sat_venv/bin/sat --token-file ~/.config/cray/tokens/$(echo $(cray config get core.hostname) | sed -e 's/https:\/\///' -e 's/\./_/g' -e "s/$/.$USER/g") $@
-}
-function superinit_sat {
-  export REQUESTS_CA_BUNDLE="/Users/alanm/.config/superinit/$(cat ~/.config/superinit/active_system)/platform-ca-certs.crt"
-  $HOME/.config/superinit/cmds/sat_venv/bin/sat --token-file ~/.config/cray/tokens/$(echo $(cray config get core.hostname) | sed -e 's/https:\/\///' -e 's/\./_/g' -e "s/$/.$USER/g") $@
-}
-alias sat=superinit_sat
-
-function s {
-    local system=${1}; shift || die "no system name specified"
-    ssh root@${system}-ncn-m001.hpc.amslabs.hpecorp.net "${@}"
-}
-
-function cfs_clone {
-    CFS_CONFIG=$(cray cfs components describe $1 | jq -r '.desiredConfig')
-    cray cfs configurations describe $CFS_CONFIG | jq -r 'del(.name,.lastUpdated)'
-}
-
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-
-parse_supercomputer() {
-     active_super=~/.config/superinit/active_system
-     if [[ -f $active_super ]]; then cat $active_super 2> /dev/null | sed 's/.*/ (&)/'; fi
 }
 
 alias say="say -v Daniel"
@@ -151,8 +119,6 @@ alias say="say -v Daniel"
 if [ -f ~/.git-completion.zsh ]; then
   . ~/.git-completion.zsh
 fi
-
-#export PS1="arbus \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\]\[\033[35m\]\$(parse_supercomputer)\[\033[00m\] $ "
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/alanm/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/alanm/google-cloud-sdk/path.zsh.inc'; fi
