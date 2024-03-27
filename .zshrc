@@ -99,12 +99,12 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias config='/usr/bin/git --git-dir=/Users/alanm/.cfg/ --work-tree=/Users/alanm'
+alias config='/usr/bin/git --git-dir=/Users/alan/.cfg/ --work-tree=/Users/alan'
 alias ipcalc='ipcalc --nocolor'
 
 export PATH=${PATH}:$HOME/bin
 export PATH=${PATH}:$HOME/google-cloud-sdk/bin
-export PATH="${PATH}:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/alanm/bin"
+export PATH="${PATH}:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/alan/bin"
 
 export EDITOR=nvim
 
@@ -121,7 +121,7 @@ if [ -f ~/.git-completion.zsh ]; then
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/alanm/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/alanm/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/alan/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/alan/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/alanm/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/alanm/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/alan/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/alan/google-cloud-sdk/completion.zsh.inc'; fi

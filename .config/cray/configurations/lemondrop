@@ -1,6 +1,0 @@
-[core]
-hostname = "https://auth.cmn.lemondrop.hpc.amslabs.hpecorp.net"
-tenant = ""
-
-[auth.login]
-username = "alanm"

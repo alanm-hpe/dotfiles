@@ -1,5 +1,0 @@
-[core]
-hostname = "https://auth.cmn.slice.hpc.amslabs.hpecorp.net"
-
-[auth.login]
-username = "alanm"

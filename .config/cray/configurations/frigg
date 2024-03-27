@@ -1,6 +1,0 @@
-[core]
-hostname = "https://auth.cmn.frigg.hpc.amslabs.hpecorp.net"
-tenant = ""
-
-[auth.login]
-username = "alanm"

@@ -1,5 +1,0 @@
-[core]
-hostname = "api.cmn.rocket.dev.cray.com"
-
-[auth.login]
-username = "alanm"

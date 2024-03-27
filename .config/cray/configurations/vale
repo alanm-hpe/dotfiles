@@ -1,5 +1,0 @@
-[core]
-hostname = "api.cmn.vale.dev.cray.com"
-
-[auth.login]
-username = "alanm"
